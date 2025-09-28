@@ -9,7 +9,7 @@ interface LanguageContextProps{
 export const LanguageContext = React.createContext<LanguageContextProps|null>(null);
 
 export  const Lang = ({children}:{children:ReactNode})=>{
-    const [language,setLanguage]= useState<string>("");
+    const [language,setLanguage]= useState<string>("javascript" as string);
 
     return(
         <>

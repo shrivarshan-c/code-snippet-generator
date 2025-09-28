@@ -1,23 +1,21 @@
-import React, { ReactNode, useState } from "react";
-
-interface FontSizeProps{
-    fontsize:string,
-    setFontsize?:(value:string)=>void
+"use client";
+import { ReactNode, useState } from "react";
+import React from "react";
+interface FontContextProps{
+    fontSize:number,
+    setFontSize: React.Dispatch<React.SetStateAction<number>>;
 }
 
+export const FontContext = React.createContext<FontContextProps|null>(null);
 
-const FontSizeContext = React.createContext<FontSizeProps|null>(null);
-export const FontSize = ({children}:{children:ReactNode})=>
-{
-    const [fontsize,setFontsize]=useState("");
+export  const Fon = ({children}:{children:ReactNode})=>{
+    const [fontSize,setFontSize]= useState<number>(14);
+
     return(
         <>
-
-        <FontSizeContext.Provider value={{fontsize,setFontsize}}>
-            {children}
-        </FontSizeContext.Provider>
-
-
+           <FontContext.Provider value={{fontSize,setFontSize}}>
+               {children}
+            </FontContext.Provider>
         </>
     )
 

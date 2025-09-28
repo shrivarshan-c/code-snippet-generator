@@ -1,26 +1,24 @@
-"use client";
-import { ReactNode, useState } from "react";
-import React from "react";
-interface ThemeContextProps{
+"use client"
 
-    themes:string,
-    setTheme?:(value:string)=>void
+import React, {  ReactNode, useState } from "react";
+import * as prismThemes from "react-syntax-highlighter/dist/esm/styles/prism";
+
+interface ThemeProps{
+    theme:keyof typeof prismThemes,
+    setTheme:(theme:keyof typeof prismThemes)=>void
 }
 
-const ThemeContext= React.createContext<ThemeContextProps|null>(null);
+export const ThemeContext = React.createContext<ThemeProps | null>(null);
 
-export const Lang = ({children}:{children:ReactNode})=>{
-const [themes,setTheme]= useState<string>("");
+export const Them = ({children}:{children:ReactNode})=>{
 
-
+    const [theme,setTheme] = useState("okaidia" as keyof typeof prismThemes); // Theme is stored as a string
     return(
         <>
-           <ThemeContext.Provider value={{themes,setTheme}}>
-               {children}
-            </ThemeContext.Provider>
+<ThemeContext.Provider value={{theme,setTheme}}>
+{children}
+</ThemeContext.Provider>
+
         </>
     )
-
 }
-
-export default ThemeContext;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react"
+import React from "react"
 import {
     Select,
     SelectContent,
@@ -7,9 +7,12 @@ import {
     SelectTrigger,
     SelectValue,
     SelectGroup
-
-  } from "@/components/ui/select"
+} from "@/components/ui/select"
 import { useLanguage } from "@/hooks/useLanguage";
+
+// @ts-expect-error: importing all HLJS languages dynamically for selector
+import * as language from "react-syntax-highlighter/dist/esm/languages/hljs";
+const Langu = Object.keys(language).map((key) => ({ val: key }));
 export const LanguageSelector=()=>{
     const {language,setLanguage} = useLanguage();
 return(
@@ -17,32 +20,17 @@ return(
     <SelectTrigger className="w-[130px]">
       <SelectValue placeholder="Language" />
     </SelectTrigger>
-    <SelectContent className="dropdown-up overflow-y-auto max-h-40" position="popper">
-    <SelectGroup>
-
-<SelectItem value="Cpp">C++</SelectItem>
-<SelectItem value="C">C</SelectItem>
-<SelectItem value="Java">Java</SelectItem>
-<SelectItem value="bash">bash</SelectItem>
-</SelectGroup>
+    <SelectContent className="dropdown-up overflow-y-auto max-h-60" position="popper">
 <SelectGroup>
+  {
+    Langu.map(({val}:{val:string})=>{
 
-<SelectItem value="Dart">Dart</SelectItem>
-<SelectItem value="rust">rust</SelectItem>
-<SelectItem value="Solidity">Solidity</SelectItem>
-<SelectItem value="typescript">Typescript</SelectItem>
+        return(
+            <SelectItem key={val} value={val}>{val}</SelectItem>
+        )
+    })
+  }
 </SelectGroup>
-<SelectGroup>
-
-<SelectItem value="javascript">Javascript</SelectItem>
-<SelectItem value="python">Python</SelectItem>
-<SelectItem value="go">Go</SelectItem>
-<SelectItem value="ruby">Ruby</SelectItem>
-<SelectItem value="php">PHP</SelectItem>
-
-</SelectGroup>
-
-
     </SelectContent>
   </Select>
 )
