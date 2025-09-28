@@ -9,6 +9,7 @@ import {
   SelectGroup,
 } from "@/components/ui/select";
 import * as htmlToImage from "html-to-image";
+import { toast } from "sonner";
 
 export const CopyandDownload = ({
   targetRef,
@@ -22,7 +23,7 @@ export const CopyandDownload = ({
     const dataUrl = await htmlToImage.toPng(targetRef.current);
     const blob = await (await fetch(dataUrl)).blob();
     await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-    alert("✅ Image copied to clipboard");
+    toast.success("Copied To Image");
   };
 
   const handleDownloadImage = async () => {
@@ -38,7 +39,7 @@ export const CopyandDownload = ({
     <Select
       value={action}
       onValueChange={(value) => {
-        setAction(""); 
+        setAction("");
         if (value === "copy") handleCopyImage();
         if (value === "download") handleDownloadImage();
       }}

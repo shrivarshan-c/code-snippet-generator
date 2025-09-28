@@ -6,6 +6,7 @@ import {Fon} from "@/context/FontSize";
 import { WrapLines } from "@/context/wrapLines";
 import { Them } from "@/context/ThemContext";
 import "./globals.css";
+import { Toaster } from "sonner";
 import {Bg} from "@/context/bgContext"
 import { Bgenabled } from "@/context/bgEnabled";
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function RootLayout({
 </Them>
             </Lang>
           </ThemeProvider>
+          <Toaster/>
         </body>
     </html>
   );
