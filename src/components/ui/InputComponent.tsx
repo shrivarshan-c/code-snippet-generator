@@ -9,14 +9,13 @@ interface InputTypes {
   className?: string;
 }
 
-export const InputComponent = ({ type, placeholder, onChange }: InputTypes) => {
+export const InputComponent = ({placeholder, onChange }: InputTypes) => {
   const [content, setContent] = useState(""); // we will actually use it
 
   return (
     <div className="flex justify-center items-center">
       <div className="w-full max-w-2xl">
         <textarea
-          type={type}
           placeholder={placeholder}
           value={content}
           onChange={(e) => {

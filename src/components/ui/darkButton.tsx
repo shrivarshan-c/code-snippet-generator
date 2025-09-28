@@ -1,7 +1,7 @@
 
 "use client";
-import {DarkIcon} from "@/../public/DarkIcon.tsx"
-import { LightIcon } from "@/../public/LightIcon.tsx"
+import {DarkIcon} from "@/../public/DarkIcon"
+import { LightIcon } from "@/../public/LightIcon"
 import { useTheme } from "next-themes"
 
 export const DarkButton=()=>{
