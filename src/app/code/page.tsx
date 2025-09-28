@@ -10,10 +10,11 @@ export default function CodePage() {
 
   return (
     <>
-  <HomeButton/>
 
-       <div className=" mt-14 flex flex-col min-h-screen bg-gray-50 dark:bg-zinc-950">
+
+       <div className=" mt-2 p-2 flex flex-col min-h-screen bg-gray-50 dark:bg-zinc-950">
       {/* Editor */}
+      <HomeButton/>
 
       <div className="flex justify-center items-start w-full p-2 sm:p-4 md:p-6 flex-1">
         <CodeEditor editorRef={editorRef} />
