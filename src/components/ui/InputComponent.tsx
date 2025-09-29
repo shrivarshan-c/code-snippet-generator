@@ -20,7 +20,7 @@ export const InputComponent = ({placeholder, onChange }: InputTypes) => {
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
-            onChange?.(e.target.value); // pass value up
+            onChange?.(e.target.value);
           }}
           className="w-full
             max-w-full sm:max-w-lg md:max-w-xl

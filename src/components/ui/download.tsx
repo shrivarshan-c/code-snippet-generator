@@ -33,6 +33,7 @@ export const CopyandDownload = ({
     link.href = dataUrl;
     link.download = "code-snippet.png";
     link.click();
+    toast.success("Image Downloaded");
   };
 
   return (
